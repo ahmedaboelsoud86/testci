@@ -21,6 +21,10 @@ jobs:
         with: 
           php-version: 8.2
 
+      - name: Run Composer
+        run: |
+          composer install --no-interaction
+
       - name: Run Test suite
         run: |
           php artisan test
