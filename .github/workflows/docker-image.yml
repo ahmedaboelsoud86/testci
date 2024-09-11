@@ -21,6 +21,10 @@ jobs:
         with: 
           php-version: 8.2
 
+      - name: Copy .env file
+        run: |
+          cp -a .env.example .env    
+
       - name: Run Composer
         run: |
           composer install --no-interaction
