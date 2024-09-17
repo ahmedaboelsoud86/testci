@@ -7,12 +7,25 @@ use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
+    
     /**
-     * A basic test example.
-     */
-    public function test_the_application_returns_a_successful_response(): void
+    * @test
+    */
+    public function the_application_returns_a_successful_response(): void
     {
         $response = $this->get('/test');
+
+        $response->assertStatus(200);
+    }
+
+    /**
+    * @test
+    */
+    public function a_user_can_viste_home_page(): void
+    {
+        $user - User::factory()->create();
+
+        $response = $this->actingAs($user)->get('');
 
         $response->assertStatus(200);
     }

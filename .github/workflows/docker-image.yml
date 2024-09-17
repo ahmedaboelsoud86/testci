@@ -22,7 +22,7 @@ jobs:
 
         with: 
           path: vender
-          key: composer-${{ hashFiles('**/composer.lock')}}
+          key: composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             composer-     
 
@@ -42,5 +42,22 @@ jobs:
       - name: Run Test suite
         run: |
           php artisan test
+
+    servers: 
+
+        mysql:
+
+          image: mysql:8.0.16
+
+          env: 
+
+            MYSQL_ALLOW_EMPTY_PASSWORD: yes
+
+            MYSQL_DATABASE: homestead
+
+          ports: 
+            - "4306:3306"
+
+          options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=5s --health-retries=3             
 
               
