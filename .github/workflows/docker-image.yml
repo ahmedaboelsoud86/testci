@@ -16,6 +16,16 @@ jobs:
 
     steps: 
       - uses: actions/checkout@v4
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v2
+
+        with: 
+          path: vender
+          key: composer-${{ hasFiles('**/composer.lock')}}
+          restore-keys: |
+            composer-     
+
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with: 
