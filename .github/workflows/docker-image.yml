@@ -22,7 +22,7 @@ jobs:
 
         with: 
           path: vender
-          key: composer-${{ hasFiles('**/composer.lock')}}
+          key: composer-${{ hashFiles('**/composer.lock')}}
           restore-keys: |
             composer-     
 
